@@ -1,0 +1,104 @@
+local player = game.Players.LocalPlayer.Character.HumanoidRootPart
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+--[[ 
+"RJTheme1"
+"RJTheme2"
+"RJTheme3"
+"RJTheme4"
+"RJTheme5"
+"RJTheme6"
+"RJTheme7"
+"RJTheme8"
+//////////////////////////////////////////////////////////////////
+]]
+--[[
+local colors = {
+    SchemeColor = Color3.fromRGB(150, 72, 148),
+	Background = Color3.fromRGB(15,15,15),
+    Header = Color3.fromRGB(15,15,15),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+]]
+
+local Window = Library.CreateLib("Enter Verity by Kzerix", "RJTheme3")
+
+local Tab = Window:NewTab("Info")
+
+local Section = Tab:NewSection("discord.gg/3Vjv9phry")
+Section:NewButton("Copy link", "Copy the link", function()
+    print("")
+end)
+
+local Tab = Window:NewTab("Main")
+
+local Section = Tab:NewSection("Player")
+
+Section:NewButton("Fly", "Fly", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end)
+
+Section:NewButton("Reset", "Reset the player", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+Section:NewSlider("Speed", "Speed of the player", 256, 1, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("JumpPower", "Jump of the player", 256, 1, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+        game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = false
+        game.Players.LocalPlayer.Character.Humanoid.JumpHeight = s
+end)
+
+local Section = Tab:NewSection("Teleport")
+
+Section:NewButton("Tp to spawn", "Teleport to spawn", function()
+	for i,v in pairs(game:GetDescendants()) do
+    if v.Name == '1' then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Structure.Decors.Path:GetChildren()[40].CFrame
+    end
+    end
+end)
+
+Section:NewButton("Tp to Verity", "Teleport to Verity", function()
+	for i,v in pairs(game:GetDescendants()) do
+    if v.Name == '2' then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Zones.WinZone.Zone.CFrame
+    end
+    end
+end)
+
+Section:NewButton("Tp to Chest 100", "Teleport to chest", function()
+	for i,v in pairs(game:GetDescendants()) do
+    if v.Name == '3' then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Zones.FunZone["Easy Obby"].Reward.Zone.CFrame
+    end
+    end
+end)
+
+Section:NewButton("Tp to Chest 250", "Teleport to chest", function()
+	for i,v in pairs(game:GetDescendants()) do
+    if v.Name == '4' then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Zones.FunZone["Glass Bridge"].Reward.Zone.CFrame
+    end
+    end
+end)
+
+Section:NewButton("Tp to Chest 500", "Teleport to chest", function()
+	for i,v in pairs(game:GetDescendants()) do
+    if v.Name == '5' then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Zones.FunZone["Hard Obby"].Reward.Zone.CFrame
+    end
+    end
+end)
+
+local Section = Tab:NewSection("Debug")
+
+Section:NewTextBox("Print", "Print the text", function(txt)
+	print(txt)
+end)
+
+Section:NewButton("Kick", "Kick the player", function()
+    game.Players.LocalPlayer:Kick("You are kicked!")
+end)
